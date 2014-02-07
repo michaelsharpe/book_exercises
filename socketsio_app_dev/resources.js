@@ -1,20 +1,20 @@
 var http = require("http");
 var url = require("url");
 
-var routes = {
+var route = {
   routes: {},
   for: function(path, handler){
     this.routes[path] = handler;
   }
 }
 
-routes.for("/start", function(request, response){
+route.for("/start", function(request, response){
   response.writeHead(200, { "content/type": "text/plain" });
   response.write("Hello!");
   response.end();
 })
 
-routes.for("/finish", function(request, response){
+route.for("/finish", function(request, response){
   response.writeHead(200, { "content/type": "text/plain"} );
   response.write("Goodbye!");
   response.end();
