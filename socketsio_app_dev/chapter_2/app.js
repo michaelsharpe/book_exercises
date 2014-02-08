@@ -1,4 +1,14 @@
 var server = require("./server.js");
+var path = require("path");
+var fs = require("fs");
+var root = __dirname;
+
+var serveStatic = function(response, file){
+  var fileToServe = path.join(root, file);
+  var stream = fs.createReadStream(fileToServe);
+
+  stream.pipe(response);
+}
 
 server.forRoute("GET", "/start", function(request, response){
   response.writeHead(200, { "Content-Type": "text/plain" });
@@ -25,17 +35,7 @@ server.forRoute("POST", "/echo", function(request, response){
 })
 
 server.forRoute("GET", "/echo", function(request, response){
-  var body = '<html>' +
-    '<head><title>Node.js Echo</title></head>' +
-    '<body>' +
-    '<form method="POST">' +
-    '<input type="text" name="msg"/>' +
-    '<input type="submit" value="echo"/>' +
-    '</form>' +
-    '</body></html>';
-  response.writeHead(200, { "Content-Type": "text/html" });
-  response.write(body);
-  response.end();
+  serveStatic(response, "echo.html");
 })
 
 server.start(9999);
