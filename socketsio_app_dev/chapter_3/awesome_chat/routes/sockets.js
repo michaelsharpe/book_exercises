@@ -11,6 +11,7 @@ exports.initialize = function(server){
       if(message.type == 'userMessage'){
         socket.broadcast.send(JSON.stringify(message));
         message.type = "myMessage";
+        console.log(socket);
         socket.send(JSON.stringify(message))
       }
     });

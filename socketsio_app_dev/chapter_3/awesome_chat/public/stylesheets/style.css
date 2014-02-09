@@ -22,7 +22,7 @@ body {
   border-radius: 10px;
 }
 
-div#message {
+div#messages {
   height: moz-calc(100% - 35px);
   height: -webkit-calc(100% - 35px);
   height: calc(100% - 35px);

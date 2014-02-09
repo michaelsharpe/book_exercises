@@ -2,6 +2,10 @@ extends layout
 
 block content
   section#chatroom
-    div#message
+    div#messages
     input#message(type='text', placeholder='Enter your message here')
     input#send(type='button', value='send')
+
+block append head
+  script(type='text/javascript', src='/socket.io/socket.io.js')
+  script(type='text/javascript', src='/javascripts/chat.js')
