@@ -19,12 +19,13 @@ body {
   background-color: #FFF;
   border: 1px solid black;
   margin: 10px;
+  border-radius: 10px;
 }
 
 div#message {
-  height: moz-calc(100% - 30px);
-  height: -webkit-calc(100% - 30px);
-  height: calc(100% - 30px);
+  height: moz-calc(100% - 35px);
+  height: -webkit-calc(100% - 35px);
+  height: calc(100% - 35px);
   padding: 10px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -32,10 +33,11 @@ div#message {
 }
 
 input#message {
-  width: moz-calc(100% - 100px);
-  width: -webkit-calc(100% - 100px);
-  width: calc(100% - 100px);
+  width: moz-calc(100% - 120px);
+  width: -webkit-calc(100% - 120px);
+  width: calc(100% - 120px);
   margin: 5px;
+  margin-left: 15px;
 }
 
 input#send{
