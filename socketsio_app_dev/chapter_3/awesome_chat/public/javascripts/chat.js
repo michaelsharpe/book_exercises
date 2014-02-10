@@ -1,13 +1,24 @@
-var iosocket = io.connect('/');
+var chatInfra = io.connect("/chat_infra"),
+    chatCom = io.connect("/chat_com");
 
-iosocket.on('message', function(data){
-  data = JSON.parse(data);
-  $('#messages').append('<div class = "'+data.type+'">' + data.message + '</div>');
+chatInfra.on('name_set', function(data){
+  chatInfra.on("user_entered", function(user){
+    $('#messages').append('<div class="systemMessage"> ' + user.name + ' has joined the room.</div>')
+  });
+
+  chatInfra.on("message", function(message){
+    var message = JSON.parse(message);
+    $('#messages').append('<div class = "'+message.type+'">' + message.message + '</div>');
+  });
+
+$('#nameform').hide();
+$('#messages').append('<div class="systemMessage">Hello ' + data.name + '</div>');
+
 });
 
-iosocket.on('name_set', function(data){
-  $('#nameform').hide();
-  $('#messages').append('<div class="systemMessage">Hello ' + data.name + '</div>');
+chatCom.on("message", function(message){
+  var message = JSON.parse(message);
+  $('#messages').append('<div class="'+message.type+'"><span class="name">' + message.username + ":</span> " + message.message + '</div>');
 })
 
 $(function(){
@@ -17,7 +28,7 @@ $(function(){
         message: $('#message').val(),
         type: 'userMessage'
         };
-      iosocket.send(JSON.stringify(data));
+      chatCom.send(JSON.stringify(data));
       $('#message').val('');
     }
   })
@@ -29,8 +40,9 @@ $(function(){
   });
 });
 
+
 $(function(){
   $('#setname').click(function(){
-    iosocket.emit('set_name', {name: $('#nickname').val()});
+    chatInfra.emit('set_name', {name: $('#nickname').val()});
   });
 });
