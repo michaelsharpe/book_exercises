@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app>
+<head>
+  <script src="angular.min.js"></script>
+  <script src="controller.js"></script>
+</head>
+<body>
+  <div ng-controller="HelloController">
+    <input ng-model="greeting.text">
+    <p>{{greeting.text}}, World!</p>
+    <p>{{text}}</p>
+  </div>
+</body>
+</html>
