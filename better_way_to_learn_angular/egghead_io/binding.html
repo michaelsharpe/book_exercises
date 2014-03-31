@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS tutorials</title>
+  <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <div ng-app>
+    <div ng-controller="FirstCtrl">
+        <h1>{{data.message}}</h1>
+        <div class={{data.message}}>
+          Wrap me with a foundation component!
+        </div>
+      </div>
+  </div>
+
+  <script src="angular.min.js"></script>
+</body>
+</html>
